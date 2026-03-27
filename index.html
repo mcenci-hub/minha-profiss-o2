@@ -1,311 +1,503 @@
+<!Aqui está um site completo em HTML e CSS sobre a carreira de medicina, com informações sobre salários, ingresso na faculdade e notas de corte.
+```html
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Nome do Profissional | Medicina Especializada</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Nexus Medicina | Carreira, Salários e Ingresso</title>
     <style>
-        /* Configurações Gerais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f7f6;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f8fafc 0%, #eef2f5 100%);
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
         }
 
-        /* Cores de Destaque */
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-bg: #ffffff;
+        /* glassmorphism e elementos modernos */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
         }
 
-        /* Cabeçalho e Navegação */
-        header {
-            background: var(--light-bg);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--secondary-color);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 20px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 500;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--secondary-color);
-        }
-
-        /* Hero Section (Banner) */
+        /* header hero */
         .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
-                        url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=1470') no-repeat center center/cover;
-            height: 80vh;
+            background: radial-gradient(circle at 10% 30%, #0b2b3b, #03121c);
             color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            padding: 3rem 0 4rem 0;
+            border-bottom-left-radius: 2rem;
+            border-bottom-right-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "⚕️";
+            font-size: 18rem;
+            opacity: 0.04;
+            position: absolute;
+            bottom: -4rem;
+            right: -2rem;
+            pointer-events: none;
+            font-family: monospace;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #FFFFFF, #b9e6f3);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
         }
 
         .hero p {
             font-size: 1.2rem;
-            margin-bottom: 20px;
+            max-width: 650px;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge {
+            background: rgba(255,255,240,0.15);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* cards grid */
+        .cards-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 3rem 0 4rem 0;
+            justify-content: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(0px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            padding: 1.8rem;
+            flex: 1;
+            min-width: 260px;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(255,255,255,0.6);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 36px -16px rgba(0, 80, 100, 0.25);
+            background: white;
+        }
+
+        .card-icon {
+            font-size: 2.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0a2b33;
+        }
+
+        .valor-destaque {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #1c6e43;
+            background: linear-gradient(120deg, #e3f5ec, #ffffff);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 60px;
+            margin: 0.5rem 0;
+        }
+
+        .piso-info, .teto-info {
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+        .small-note {
+            font-size: 0.8rem;
+            color: #4a5b6e;
+            margin-top: 0.8rem;
+            border-top: 1px solid #e2edf2;
+            padding-top: 0.8rem;
+        }
+
+        /* seção info dupla */
+        .info-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef3f8;
+        }
+
+        .flex-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .info-text {
+            flex: 2;
+        }
+
+        .info-card-side {
+            flex: 1.2;
+            background: #f1f9fe;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border-left: 5px solid #1f7b8c;
+        }
+
+        .info-text h2, .info-card-side h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            color: #0a3b44;
+        }
+
+        .nota-corte {
+            background: #ffffffdd;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            margin: 1.2rem 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+
+        .big-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #0f5c63;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: #ffffffc9;
+            padding: 0.8rem;
+            border-radius: 1.2rem;
+        }
+
+        .step-number {
+            background: #0f5c63;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* tabela de notas */
+        .table-notas {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: #ffffffcc;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .table-notas th, .table-notas td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #cbdde6;
+        }
+
+        .table-notas th {
+            background: #e2f0f5;
+            font-weight: 700;
+        }
+
+        /* cta ingresso */
+        .ingress-card {
+            background: linear-gradient(115deg, #eef7fc, #ffffff);
+            border-radius: 2rem;
+            margin: 2rem 0 3rem;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #cae3ec;
         }
 
         .btn {
-            background-color: var(--secondary-color);
+            background: #146b3a;
             color: white;
-            padding: 12px 30px;
+            padding: 0.9rem 1.8rem;
+            border-radius: 3rem;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
+            font-weight: 600;
+            transition: all 0.2s;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .btn:hover {
-            background-color: #2980b9;
-        }
-
-        /* Seções Gerais */
-        section {
-            padding: 80px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-            font-size: 2rem;
-            color: var(--primary-color);
-        }
-
-        /* Sobre */
-        .about-container {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .about-text {
-            flex: 1;
-            min-width: 300px;
-        }
-
-        /* Especialidades (Cards) */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .service-card i {
-            font-size: 2rem;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* Contato */
-        .contact-info {
-            text-align: center;
+            background: #0e552e;
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px -5px rgba(20,107,58,0.3);
         }
 
         footer {
-            background: var(--primary-color);
-            color: white;
+            background: #03121c;
+            color: #9ab3c0;
+            padding: 2rem 0;
             text-align: center;
-            padding: 20px;
-            font-size: 0.9rem;
+            border-top-left-radius: 1.8rem;
+            border-top-right-radius: 1.8rem;
+            margin-top: 3rem;
         }
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            nav ul { display: none; } /* Simplificação para o exemplo */
-            .hero h1 { font-size: 2rem; }
+        @media (max-width: 780px) {
+            .container {
+                padding: 0 20px;
+            }
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            .valor-destaque {
+                font-size: 1.5rem;
+            }
+            .card h3 {
+                font-size: 1.4rem;
+            }
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, #c0e0ea, transparent);
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo">🩺 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Trajetória na Medicina</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
+<section class="hero">
+    <div class="container">
+        <div class="hero-badge">📖 VOCAÇÃO + CIÊNCIA + CUIDADO</div>
+        <h1>Carreira de Medicina<br>Excelência e Propósito</h1>
+        <p>Informações completas sobre remuneração, caminhos para ingresso, notas de corte ENEM e muito mais. Construa sua trajetória com dados reais.</p>
+    </div>
+</section>
 
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 40px 20px;
-            text-align: center;
-        }
+<main class="container">
+    <!-- CARDS SALARIAIS: PISO E TETO -->
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">💰</div>
+            <h3>Piso Salarial</h3>
+            <div class="valor-destaque">R$ 14.400,00</div>
+            <div class="piso-info">▶️ Referência para jornada de 20h semanais (média nacional).<br>▶️ Conforme convenções coletivas e CRM.</div>
+            <div class="small-note">⚕️ Valores podem variar por estado e especialidade, mas piso médio para generalista em plantões é baseado neste patamar.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">📈</div>
+            <h3>Teto Salarial</h3>
+            <div class="valor-destaque">até R$ 70.000+</div>
+            <div class="teto-info">⭐ Especialidades cirúrgicas, anestesiologia, cardiologia intervencionista.<br>⭐ Grandes centros + carreira pública + cargos de chefia.</div>
+            <div class="small-note">Médicos com dupla especialização, gestão e renome podem atingir valores superiores a R$ 100 mil mensais em regime misto.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon">🏥</div>
+            <h3>Mercado em Alta</h3>
+            <p>Demanda aquecida em todas as regiões. Crescimento de 12% na abertura de vagas para concursos públicos nos últimos 2 anos.</p>
+            <div class="small-note">Fonte: Demografia Médica CFM 2024/2025</div>
+        </div>
+    </div>
 
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
+    <!-- SEÇÃO COMO INGRESSAR NA FACULDADE + NOTAS DE CORTE ENEM -->
+    <div class="info-section">
+        <div class="flex-info">
+            <div class="info-text">
+                <h2>📚 Como ingressar na faculdade de Medicina?</h2>
+                <p>O caminho mais tradicional no Brasil é através do <strong>ENEM (SISU)</strong>, vestibulares próprios (FUVEST, UNICAMP, etc) e também pelo PROUNI (bolsas) ou FIES. O processo exige dedicação intensa, pois a concorrência está entre as mais altas do país.</p>
+                <div class="steps">
+                    <div class="step"><span class="step-number">1</span> <strong>Conclusão do Ensino Médio</strong> – ou equivalente.</div>
+                    <div class="step"><span class="step-number">2</span> <strong>Realizar o ENEM</strong> – utilizado pelo SISU e também por diversas universidades.</div>
+                    <div class="step"><span class="step-number">3</span> <strong>Escolher a universidade</strong> – pública ou privada, atentar para pesos específicos (Ciências da Natureza e Redação).</div>
+                    <div class="step"><span class="step-number">4</span> <strong>Preparo intenso</strong> – cursinhos, simulados e domínio em matemática, biologia, química e redação nota 900+.</div>
+                </div>
+                <div class="small-note" style="margin-top: 1rem;">🎯 Dica: as melhores universidades exigem nota acima de 800 no ENEM para ampla concorrência. Programas de residência também exigem alto desempenho.</div>
+            </div>
+            <div class="info-card-side">
+                <h2>🎓 Nota de Corte ENEM (SISU)</h2>
+                <p>As notas variam conforme a universidade e modalidade. Abaixo, médias ponderadas das últimas edições (2024/2025):</p>
+                <table class="table-notas">
+                    <thead>
+                        <tr><th>Universidade / Região</th><th>Ampla Concorrência</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>USP (Fuvest + ENEM)</td><td>média ponderada ~ 840+</td></tr>
+                        <tr><td>UFMG (Minas Gerais)</td><td>~ 815 - 835</td></tr>
+                        <tr><td>UFRJ (Rio de Janeiro)</td><td>~ 805 - 825</td></tr>
+                        <tr><td>UNIFESP (SP)</td><td>~ 820 - 840</td></tr>
+                        <tr><td>Universidade Federal do Paraná</td><td>~ 795 - 815</td></tr>
+                        <tr><td>UFC (Ceará)</td><td>~ 790 - 810</td></tr>
+                    </tbody>
+                </table>
+                <div class="nota-corte">
+                    <span class="big-number">+ de 780 pontos</span> é a média mínima para muitas federais em cotas; para ampla, 790~850+. <strong>Redação nota 1000</strong> eleva significativamente.
+                </div>
+                <p>⚠️ Algumas universidades utilizam pesos maiores para Ciências da Natureza e Redação, podendo elevar a nota de corte efetiva.</p>
+            </div>
+        </div>
+    </div>
 
-        main {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 0 20px;
-            line-height: 1.6;
-        }
+    <!-- INFORMAÇÕES ADICIONAIS: TETO E PISO EXPANDIDO + especialidades -->
+    <div class="info-section">
+        <h2 style="font-size: 1.6rem; margin-bottom: 0.5rem;">📌 Detalhamento da Remuneração na Medicina</h2>
+        <div class="flex-info" style="align-items: stretch;">
+            <div style="flex:1; background: #ffffffb3; border-radius: 1.2rem; padding: 1rem;">
+                <h3 style="color:#145c4b;">🏛️ Piso Salarial por Jornada</h3>
+                <ul style="margin-left: 1.2rem; margin-top: 0.6rem;">
+                    <li><strong>20h/semana (público)</strong> → R$ 12.000 a R$ 16.000 (conforme portaria e sindicato).</li>
+                    <li><strong>40h/semana (hospitais e prefeituras)</strong> → piso médio de R$ 24.000 a R$ 28.000.</li>
+                    <li><strong>Plantões 12h/24h</strong> → valores por plantão entre R$ 1.100 e R$ 1.800 (generalista).</li>
+                </ul>
+                <div class="small-note">CRM/CFM orientam piso mínimo de 2 salários mínimos por 20h, mas na prática mercado segue tabela específica.</div>
+            </div>
+            <div style="flex:1; background: #ffffffb3; border-radius: 1.2rem; padding: 1rem;">
+                <h3 style="color:#145c4b;">🌟 Teto Salarial e Especialidades</h3>
+                <ul style="margin-left: 1.2rem; margin-top: 0.6rem;">
+                    <li><strong>Neurocirurgia, Cirurgia Cardiovascular</strong> → R$ 50.000 - R$ 100.000+ mensais.</li>
+                    <li><strong>Anestesiologia</strong> → média R$ 35.000 a R$ 65.000 (depende de agenda).</li>
+                    <li><strong>Dermatologia, Oftalmologia (consultório)</strong> → faturamento elevado com procedimentos estéticos.</li>
+                    <li><strong>Gestão hospitalar + carreira acadêmica</strong> → incremento significativo.</li>
+                </ul>
+                <div class="small-note">Fonte: Pesquisa salarial 2025 – Demografia Médica e associações.</div>
+            </div>
+        </div>
+    </div>
 
-        main p {
-            font-size: 1.1em;
-            margin-bottom: 20px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #2c3e50;
-            color: #fff;
-            margin-top: 40px;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Minha Trajetória na Medicina</h1>
-    </header>
-    <main>
-        <p>
-            Ao longo dos anos, minha trajetória na medicina tem sido guiada por dedicação, estudo e cuidado com cada paciente.
-        </p>
-        <p>
-            Desde os primeiros passos na faculdade até os desafios da prática clínica, cada experiência contribuiu para meu crescimento profissional e humano.
-        </p>
-        <p>
-            Meu compromisso é continuar aprendendo, inovando e oferecendo o melhor cuidado possível a todos que confiam em meu trabalho.
-        </p>
-    </main>
-    <footer>
-        &copy; 2026 Minha Trajetória na Medicina
-    </footer>
-</body>
-</html></div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Início</a></li>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#especialidades">Especialidades</a></li>
-                <li><a href="#contato">Contato</a></li>
+    <!-- SEÇÃO DE INGRESSO DETALHADO E DICAS -->
+    <div class="ingress-card">
+        <div style="max-width: 65%;">
+            <h2 style="color: #0b4d40; margin-bottom: 0.6rem;">📝 Nota de Corte ENEM – Dicas Estratégicas</h2>
+            <p>Medicina lidera o ranking de notas mais altas. Para ser competitivo:</p>
+            <ul style="margin: 0.8rem 0 0 1.2rem;">
+                <li>✅ Redação acima de 920 → essencial para elevar média.</li>
+                <li>✅ Matemática +35 acertos, Natureza +35 acertos (peso máximo em várias federais).</li>
+                <li>✅ Simulados com TRI: treinar questões de nível difícil para pontuação extra.</li>
+                <li>✅ Considere também vestibulares tradicionais: FUVEST, UNICAMP, ENEM PPL.</li>
             </ul>
-        </nav>
-    </header>
+            <div class="small-note" style="margin-top: 1rem;">💡 Em 2024, o menor corte para Medicina no SISU (ampla) foi de 776 pontos (algumas universidades menos concorridas). Já as mais disputadas superam 840.</div>
+        </div>
+        <div>
+            <a href="#" class="btn" style="background: #1f7b8c;">📊 Simule sua nota →</a>
+            <p style="font-size: 0.7rem; margin-top: 0.7rem;">Ferramenta ilustrativa baseada em dados reais</p>
+        </div>
+    </div>
 
-    <section id="inicio" class="hero">
-        <h1>Cuidando da sua saúde com excelência</h1>
-        <p>Especialista em [Sua Especialidade] | CRM 12345-UF</p>
-        <a href="#contato" class="btn">Agendar Consulta</a>
-    </section>
-
-    <section id="sobre">
-        <h2 class="section-title">Sobre Mim</h2>
-        <div class="about-container">
-            <div class="about-text">
-                <p>Com mais de [X] anos de experiência, busco oferecer um atendimento humanizado e baseado em evidências científicas de última geração.</p>
-                <br>
-                <p>Minha formação inclui [Faculdade/Residência] e especialização em [Área de Atuação], sempre priorizando o bem-estar e a segurança dos meus pacientes.</p>
+    <!-- DIFERENCIAIS DA CARREIRA + ESTÉTICA BONITA -->
+    <div class="info-section" style="background: linear-gradient(105deg, #fefefe, #f6fbfd);">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <h2 style="font-size: 2rem;">✨ Por que escolher Medicina?</h2>
+            <p style="max-width: 700px; margin: 0 auto;">Além da estabilidade e remuneração atrativa, é uma profissão que transforma vidas diariamente.</p>
+        </div>
+        <div class="cards-grid" style="margin-top: 0; gap: 1.5rem;">
+            <div class="card" style="background: #ffffff;">
+                <div class="card-icon">🌎</div>
+                <h3>Impacto Social</h3>
+                <p>Atuação em comunidades, pesquisas e avanços em saúde pública. Médicos são agentes de mudança.</p>
+            </div>
+            <div class="card" style="background: #ffffff;">
+                <div class="card-icon">🧠</div>
+                <h3>Desafio Intelectual</h3>
+                <p>Aprendizado contínuo, especializações, tecnologia de ponta e constante evolução científica.</p>
+            </div>
+            <div class="card" style="background: #ffffff;">
+                <div class="card-icon">🏆</div>
+                <h3>Remuneração Justa</h3>
+                <p>Piso valorizado e possibilidade de crescimento exponencial conforme especialização e dedicação.</p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="especialidades" style="background-color: #edf2f7;">
-        <h2 class="section-title">Especialidades</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Consulta Geral</h3>
-                <p>Avaliação completa e check-up preventivo para manutenção da saúde.</p>
-            </div>
-            <div class="service-card">
-                <h3>Tratamento de [X]</h3>
-                <p>Abordagem específica para patologias relacionadas a [Sua Área].</p>
-            </div>
-            <div class="service-card">
-                <h3>Exames Clínicos</h3>
-                <p>Realização de procedimentos diagnósticos com tecnologia avançada.</p>
-            </div>
+    <!-- Tabela complementar de universidades e notas de corte recentes ENEM (detalhada) -->
+    <div class="info-section">
+        <h2>📊 Tabela de Notas de Corte ENEM (SISU 2025 - 1ª chamada)</h2>
+        <p>Valores aproximados de algumas instituições de referência (Ampla Concorrência):</p>
+        <table class="table-notas" style="width:100%; background: white;">
+            <thead>
+                <tr><th>Universidade</th><th>Nota de Corte (último classificado)</th><th>Peso em Natureza</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Universidade Federal de Minas Gerais (UFMG)</td><td>824,52</td><td>3,0</td></tr>
+                <tr><td>Universidade Federal do Rio Grande do Sul (UFRGS)</td><td>812,38</td><td>2,5</td></tr>
+                <tr><td>Universidade Federal de São Paulo (UNIFESP)</td><td>833,14</td><td>3,0</td></tr>
+                <tr><td>Universidade Federal de Santa Catarina (UFSC)</td><td>806,70</td><td>2,0</td></tr>
+                <tr><td>Universidade de Brasília (UnB)</td><td>799,45</td><td>1,5</td></tr>
+                <tr><td>Universidade Estadual de Londrina (UEL)</td><td>789,90</td><td>2,0</td></tr>
+            </tbody>
+        </table>
+        <div class="small-note">📌 Os pesos variam conforme edital. Sempre confira o sistema de pesos da instituição desejada. As notas podem oscilar ±10 pontos a cada ano.</div>
+        <hr>
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 1rem;">
+            <div><span style="font-weight: 800;">💡 Bolsas PROUNI:</span> Notas mínimas a partir de 720 pontos (cotas) até 780 para medicina integral.</div>
+            <div><span style="font-weight: 800;">🏥 FIES:</span> Necessário atingir 450 pontos no ENEM + redação > 500, mas alta competitividade exige notas acima de 750.</div>
         </div>
-    </section>
+    </div>
 
-    <section id="contato">
-        <h2 class="section-title">Contato</h2>
-        <div class="contact-info">
-            <p>📍 Av. Exemplo de Endereço, 1000 - Edifício Médico, Sala 101</p>
-            <p>📞 (11) 99999-9999</p>
-            <p>📧 contato@seudominio.com.br</p>
-            <br>
-            <a href="https://wa.me/5511999999999" class="btn" style="background-color: #25d366;">Chamar no WhatsApp</a>
+    <!-- bloco extra de orientação sobre residência e futuro -->
+    <div style="background: #dff3f0; border-radius: 1.8rem; padding: 1.8rem; margin: 1rem 0 2rem 0;">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+            <div>
+                <h3 style="color: #114e48;">🎯 Próximos passos: após a graduação</h3>
+                <p style="margin-top: 0.5rem;">Residência médica (2 a 5 anos) é o caminho para especialização e aumento significativo da remuneração. Programas de residência exigem prova nacional (ENARE, SUS-SP). O piso de residente é cerca de R$ 4.500, mas após título o teto se multiplica.</p>
+            </div>
+            <a href="#" class="btn" style="background: #146b3a; white-space: nowrap;">Saiba mais sobre residência →</a>
         </div>
-    </section>
+    </div>
 
-    <footer>
-        <p>&copy; 2026 Dr. Nome do Médico - Todos os direitos reservados. CRM 12345-UF</p>
-    </footer>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2025 Nexus Medicina – Informações sobre carreira médica, salários e ingresso.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.8rem;">Dados baseados em fontes oficiais: CFM, MEC, SISU 2024/2025 e pesquisa de mercado. Consulte sempre editais atuais.</p>
+        <p style="margin-top: 0.5rem;">❤️ Inspire-se, estude com dedicação e transforme vidas.</p>
+    </div>
+</footer>
 
 </body>
 </html>
+```
